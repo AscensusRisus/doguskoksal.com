@@ -28,15 +28,30 @@ header {
     margin: 0 auto;
     padding: 0 60px; 
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    gap: 590px;
+    flex: 1;
+    position: relative;
 }
 
+.logo {
+    flex: 1;
+} 
+
 .main-nav {
+    flex: 1;
     display: flex;
+    justify-content: center;
     gap: 5px;
 }
+
+.header-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
 
 .nav-link {
     text-decoration: none;
@@ -67,8 +82,7 @@ header {
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
     display: flex;
-    align-items: center;
-    gap: 6px;
+    align-items: left;
 }
 
 #dark-mode-toggle:hover {
@@ -202,7 +216,7 @@ h2::after {
     gap: 15px;
     flex-wrap: wrap;
     margin: 30px auto;
-    max-width: 600px;
+    max-width: 750px;
 }
 
 .contact-link {
@@ -317,4 +331,7 @@ body.dark-mode .nav-link:hover {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+@media screen and (width<990px){
+    
 }
