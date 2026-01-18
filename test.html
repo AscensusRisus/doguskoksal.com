@@ -3,100 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>12 Button Page</title>
+    <title>Quick Links</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .container {
-            background: white;
-            border-radius: 20px;
+            font-family: system-ui, sans-serif;
+            background: #1a1a1a;
+            color: #fff;
             padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 800px;
-            width: 100%;
         }
-
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 30px;
-            font-size: 2em;
-        }
-
-        .button-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 20px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 8px;
+            background: #333;
+            color: #fff;
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            border-radius: 6px;
+            border: 1px solid #444;
         }
-
-        .button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-        }
-
-        .button:active {
-            transform: translateY(-1px);
-        }
-
-        @media (max-width: 600px) {
-            .button-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .container {
-                padding: 20px;
-            }
+        .btn:hover {
+            background: #444;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Quick Links</h1>
-        <div class="button-grid">
-            <a href="https://drive.google.com/file/d/14Ay1NayrKiT2thszHcjWvCOgFBgAwskY/view" class="button">EP 1</a>
-            <a href="https://drive.google.com/file/d/132xsrGHmYSCQXfy2dcfbwKxFJxkf6fGu/view" class="button">EP 2</a>
-            <a href="https://drive.google.com/file/d/14k7t5zPA9slnQzGPgPvGBLp165JEEU5s/view" class="button">EP 3</a>
-            <a href="https://drive.google.com/file/d/1ryNFCwM9XKgPYAz180a4wEH80BuO25Td/view" class="button">EP 4</a>
-            <a href="https://drive.google.com/file/d/18wbNvIm3Ukx_aHOClYG0_LqPophXzLIH/view" class="button">EP 5</a>
-            <a href="https://drive.google.com/file/d/1sqxcd606nwOJZSs7eVeJGRzZARRLFtcU/view" class="button">EP 6</a>
-            <a href="https://drive.google.com/file/d/1zrKCHvstuM9Zakh_Nk7L9dvjarH44Gvr/view" class="button">EP 7</a>
-            <a href="https://drive.google.com/file/d/1zWW7I21GtnHquUfjlWrnZ2xZAdhCLeeC/view" class="button">EP 8</a>
-            <a href="https://drive.google.com/file/d/1c1_7M66RlUlaVrVtUUJRgKiEdRPv-0Wd/view" class="button">EP 9</a>
-            <a href="https://drive.google.com/file/d/1W3HKNLtHVQWYahycaSmRRcBGt3oQ7Fwl/view" class="button">EP 10</a>
-            <a href="https://drive.google.com/file/d/1gRnF-xBkOewr9ufnepletYBf9Vgz3_Cw/view" class="button">EP 11</a>
-        </div>
-    </div>
+    <h2>Links</h2>
+    <a href="https://drive.google.com/file/d/1TxvxY2jjEuEl028NApIZHvnhoyRoXQ8L/view" class="btn">Button 1</a>
+    <a href="https://drive.google.com/file/d/1T9PM5FKshmKQhYKlmTefV1F-DsCbTuYQ/view" class="btn">Button 2</a>
+    <a href="https://drive.google.com/file/d/10YQ3OhYLaBXJfW_AUkdS6S08-gLvGELb/view" class="btn">Button 3</a>
+    <a href="https://drive.google.com/file/d/1K0lHFn2zYIjem4NGAN5oJ94lOLTthA5e/view" class="btn">Button 4</a>
+    <a href="#" class="btn">Button 5</a>
+    <a href="#" class="btn">Button 6</a>
+    <a href="#" class="btn">Button 7</a>
+    <a href="#" class="btn">Button 8</a>
 </body>
 </html>
