@@ -1,0 +1,25 @@
+{
+  "name": "doguskoksal.com",
+  "version": "1.0.0",
+  "description": "doguskoksal.com",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AscensusRisus/doguskoksal.com.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AscensusRisus/doguskoksal.com/issues"
+  },
+  "homepage": "https://github.com/AscensusRisus/doguskoksal.com#readme",
+  "dependencies": {
+    "astro": "^7.1.3"
+  }
+}

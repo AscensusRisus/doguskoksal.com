@@ -1,0 +1,15 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+export async function getStaticPaths() { const projects = await getCollection('work'); return projects.map((project) => ({ params: { slug: project.id }, props: { project } })); }
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<BaseLayout title={`${project.data.title} — Doğuş Köksal`}>
+  <article class="shell case-study">
+    <a class="back-link" href="/work">← Back to work</a>
+    <div class="case-header"><p class="eyebrow">{project.data.year} / {project.data.role} / {project.data.visibility === 'private' ? 'Private project' : 'Public project'}</p><h1>{project.data.title}</h1><p class="lede">{project.data.summary}</p></div>
+    <div class="case-body">{project.data.visibility === 'private' && <div class="placeholder-note">Private project — this page shares only a high-level description. No private repository or live link is exposed.</div>}<div class="prose"><Content /></div></div>
+  </article>
+</BaseLayout>

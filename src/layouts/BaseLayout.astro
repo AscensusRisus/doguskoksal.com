@@ -1,0 +1,100 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = 'Doğuş Köksal — Software Engineer', description = 'A personal portfolio for Doğuş Köksal.' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, 'https://doguskoksal.com').toString();
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Doğuş Köksal',
+  url: 'https://doguskoksal.com',
+  jobTitle: 'Software Engineer',
+  address: { '@type': 'PostalAddress', addressCountry: 'TR' },
+  sameAs: [
+    'https://github.com/AscensusRisus',
+    'https://www.linkedin.com/in/dogus-koksal/',
+    'https://medium.com/@doguskoksl',
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f2f0eb" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Doğuş Köksal" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet" />
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
+    <script is:inline>
+      const savedTheme = localStorage.getItem('theme-preference') || 'system';
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = savedTheme === 'system' ? systemTheme : savedTheme;
+      document.documentElement.dataset.themePreference = savedTheme;
+    </script>
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="wordmark" href="/" aria-label="Doğuş Köksal home">Doğuş Köksal</a>
+        <nav aria-label="Primary navigation">
+          <a href="/" class={Astro.url.pathname === '/' ? 'active' : undefined}>Home</a>
+          <a href="/work" class={Astro.url.pathname.startsWith('/work') ? 'active' : undefined}>Work</a>
+          <details class="theme-switcher">
+            <summary>Theme</summary>
+            <div class="theme-menu" aria-label="Theme preference">
+              <button type="button" data-theme-choice="system">System</button>
+              <button type="button" data-theme-choice="light">Light</button>
+              <button type="button" data-theme-choice="dark">Dark</button>
+            </div>
+          </details>
+        </nav>
+        <div class="header-actions"><a class="resume-link" href="/resume/Dogus-Koksal-Resume.docx" download>Resume <span aria-hidden="true">↓</span></a><a class="header-contact" href="mailto:doguskoksl@gmail.com">Email <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </header>
+    <main id="main-content">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <span>Doğuş Köksal</span>
+        <span>Learning in public, one project at a time.</span>
+        <span>© 2026</span>
+      </div>
+    </footer>
+    <script is:inline>
+      const root = document.documentElement;
+      const themeButtons = document.querySelectorAll('[data-theme-choice]');
+      const resolveTheme = (preference) => preference === 'system' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : preference;
+      const applyTheme = (preference) => {
+        localStorage.setItem('theme-preference', preference);
+        root.dataset.themePreference = preference;
+        root.dataset.theme = resolveTheme(preference);
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', root.dataset.theme === 'dark' ? '#1c1d1a' : '#f2f0eb');
+      };
+      themeButtons.forEach((button) => button.addEventListener('click', () => applyTheme(button.dataset.themeChoice)));
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', () => {
+        if (root.dataset.themePreference === 'system') applyTheme('system');
+      });
+    </script>
+  </body>
+</html>
