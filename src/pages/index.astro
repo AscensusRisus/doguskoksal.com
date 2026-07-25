@@ -23,7 +23,7 @@ const projects = (await getCollection('work')).sort((a, b) => a.id.localeCompare
         <h1 id="intro-title">I'm Doğuş.<br /><em>I make ideas work.</em></h1>
     <div class="hero-bottom">
       <p class="lede">I build practical software across web development, cybersecurity, and applied AI — always learning by turning difficult ideas into useful tools.</p>
-      <a class="text-link" href="#about">More about me <span aria-hidden="true">↓</span></a>
+      <a class="text-link" href="#about">More about me</a>
     </div>
     <div class="status-line" aria-label="Current status"><span>Based in Turkey</span><span>Open to software engineering roles</span><span>Resume updated 23 Jul 2026</span></div>
   </section>
@@ -34,7 +34,7 @@ const projects = (await getCollection('work')).sort((a, b) => a.id.localeCompare
   </section>
 
   <section class="shell section-block" aria-labelledby="work-heading">
-    <div class="section-heading"><p class="eyebrow">01 / Selected work</p><a class="text-link" href="/work">View all work <span aria-hidden="true">↗</span></a></div>
+    <div class="section-heading"><p class="eyebrow">01 / Selected work</p><a class="text-link" href="/work">View all work</a></div>
     <h2 id="work-heading">A work in progress.</h2>
     <WorkList projects={projects} limit={2} />
   </section>

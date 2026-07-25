@@ -17,7 +17,6 @@ const visibleProjects = limit ? projects.slice(0, limit) : projects;
       <span class="work-title">{project.data.title}</span>
       <span class="work-summary"><span>{project.data.summary}</span>{project.data.tags.length > 0 && <small>{project.data.tags.join(' · ')}</small>}</span>
       <span class="work-meta">{project.data.year}</span>
-      <span class="arrow" aria-hidden="true">↗</span>
     </a>
   ))}
 </div>
