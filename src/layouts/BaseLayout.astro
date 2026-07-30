@@ -97,6 +97,31 @@ const personSchema = {
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', () => {
         if (root.dataset.themePreference === 'system') applyTheme('system');
       });
+
+      const driftingDecorations = document.querySelectorAll('[data-scroll-drift]');
+      if (driftingDecorations.length) {
+        let driftFrame = false;
+        const updateDecorationDrift = () => {
+          const scrollRange = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+          const scrollProgress = Math.min(Math.max(window.scrollY / scrollRange, 0), 1);
+          driftingDecorations.forEach((decoration) => {
+            const maximum = Number(decoration.getAttribute('data-scroll-drift-max')) || 0;
+            const offset = scrollProgress * maximum;
+            decoration.style.setProperty('--scroll-drift-y', `${offset}px`);
+          });
+          driftFrame = false;
+        };
+        const requestDecorationDrift = () => {
+          if (!driftFrame) {
+            driftFrame = true;
+            window.requestAnimationFrame(updateDecorationDrift);
+          }
+        };
+        updateDecorationDrift();
+        window.addEventListener('scroll', requestDecorationDrift, { passive: true });
+        window.addEventListener('resize', requestDecorationDrift);
+      }
+
     </script>
   </body>
 </html>

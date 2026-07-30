@@ -8,17 +8,17 @@ const projects = (await getCollection('work')).sort((a, b) => a.id.localeCompare
 ---
 
 <BaseLayout>
+  <div class="site-motifs" aria-hidden="true">
+    <div class="note-background-test" data-scroll-drift="0.16" data-scroll-drift-max="180">
+      <span class="note-symbol note-symbol-light"></span>
+      <span class="note-symbol note-symbol-heavy"></span>
+      <span class="note-symbol note-symbol-eighth"></span>
+      <span class="note-symbol note-symbol-quarter"></span>
+    </div>
+    <span class="kyoko-ribbon" data-scroll-drift="0.08" data-scroll-drift-max="100"></span>
+    <img class="chiaki-hairpin" data-scroll-drift="0.12" data-scroll-drift-max="140" src="/motifs/chiaki-hairpin.png?v=2" alt="" />
+  </div>
       <section class="shell hero" aria-labelledby="intro-title">
-        <!-- Kaede hairpin motif: temporarily commented out while exploring a better background treatment. -->
-        <!--
-        <div class="note-background-test" aria-hidden="true">
-          <span class="note-symbol note-symbol-light"></span>
-          <span class="note-symbol note-symbol-heavy"></span>
-          <span class="note-symbol note-symbol-eighth"></span>
-          <span class="note-symbol note-symbol-quarter"></span>
-        </div>
-        <span class="kyoko-ribbon" aria-hidden="true"></span>
-        -->
         <p class="eyebrow">Software engineer / computer programming graduate</p>
         <h1 id="intro-title">I'm Doğuş.<br /><em>I make ideas work.</em></h1>
     <div class="hero-bottom">
