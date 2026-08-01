@@ -57,20 +57,41 @@ const personSchema = {
     <a class="skip-link" href="#main-content">Skip to content</a>
     <header class="site-header">
       <div class="shell header-inner">
-        <a class="wordmark" href="/" aria-label="Doğuş Köksal home">Doğuş Köksal</a>
-        <nav aria-label="Primary navigation">
+        <a class="wordmark" href="/" aria-label="Doğuş Köksal home"><img class="wordmark-icon" src="/favicon.svg" alt="Doğuş Köksal" /></a>
+        <nav class="desktop-nav" aria-label="Primary navigation">
           <a href="/" class={Astro.url.pathname === '/' ? 'active' : undefined}>Home</a>
           <a href="/work" class={Astro.url.pathname.startsWith('/work') ? 'active' : undefined}>Work</a>
+        </nav>
+        <div class="header-actions">
           <details class="theme-switcher">
-            <summary>Theme</summary>
+            <summary aria-label="Choose theme" title="Choose theme"><svg class="theme-icon" viewBox="0 0 24 24" aria-hidden="true"><g class="theme-sun"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2.5v2M12 19.5v2M4.58 4.58l1.42 1.42M18 18l1.42 1.42M2.5 12h2M19.5 12h2M4.58 19.42 6 18M18 6l1.42-1.42"></path></g><path class="theme-moon" d="M20 15.2A8.3 8.3 0 0 1 8.8 4a8.3 8.3 0 1 0 11.2 11.2Z"></path></svg><span class="sr-only">Theme</span></summary>
             <div class="theme-menu" aria-label="Theme preference">
               <button type="button" data-theme-choice="system">System</button>
               <button type="button" data-theme-choice="light">Light</button>
               <button type="button" data-theme-choice="dark">Dark</button>
             </div>
           </details>
-        </nav>
-        <div class="header-actions"><a class="resume-link" href="/resume/Dogus-Koksal-Resume.docx" download>Resume</a><a class="header-contact" href="mailto:doguskoksl@gmail.com">Email</a></div>
+          <a class="header-contact email-icon-link" href="mailto:doguskoksl@gmail.com" aria-label="Email" title="Email"><svg class="email-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"></rect><path d="m4 7 8 6 8-6"></path></svg><span class="sr-only">Email</span></a><a class="resume-link" href="/resume/Dogus-Koksal-Resume.pdf" download>Resume</a>
+        </div>
+        <div class="mobile-controls">
+          <details class="mobile-theme-switcher theme-switcher">
+            <summary aria-label="Choose theme" title="Choose theme"><svg class="theme-icon" viewBox="0 0 24 24" aria-hidden="true"><g class="theme-sun"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2.5v2M12 19.5v2M4.58 4.58l1.42 1.42M18 18l1.42 1.42M2.5 12h2M19.5 12h2M4.58 19.42 6 18M18 6l1.42-1.42"></path></g><path class="theme-moon" d="M20 15.2A8.3 8.3 0 0 1 8.8 4a8.3 8.3 0 1 0 11.2 11.2Z"></path></svg><span class="sr-only">Theme</span></summary>
+            <div class="theme-menu" aria-label="Theme preference">
+              <button type="button" data-theme-choice="system">System</button>
+              <button type="button" data-theme-choice="light">Light</button>
+              <button type="button" data-theme-choice="dark">Dark</button>
+            </div>
+          </details>
+          <a class="header-contact email-icon-link" href="mailto:doguskoksl@gmail.com" aria-label="Email" title="Email"><svg class="email-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"></rect><path d="m4 7 8 6 8-6"></path></svg><span class="sr-only">Email</span></a>
+          <details class="menu-switcher">
+            <summary aria-label="Open menu" title="Open menu"><span class="menu-icon" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr-only">Menu</span></summary>
+            <nav class="mobile-nav" aria-label="Mobile navigation">
+              <a href="/" class={Astro.url.pathname === '/' ? 'active' : undefined}>Home</a>
+              <a href="/work" class={Astro.url.pathname.startsWith('/work') ? 'active' : undefined}>Work</a>
+              <a class="resume-link" href="/resume/Dogus-Koksal-Resume.pdf" download>Resume</a>
+            </nav>
+          </details>
+        </div>
       </div>
     </header>
     <main id="main-content">
@@ -78,9 +99,8 @@ const personSchema = {
     </main>
     <footer class="site-footer">
       <div class="shell footer-inner">
-        <span>Doğuş Köksal</span>
-        <span>Learning in public, one project at a time.</span>
-        <span>© 2026</span>
+        <div class="footer-meta"><span>Doğuş Köksal</span><span>© 2026</span></div>
+        <span class="footer-tagline">Learning in public, one project at a time.</span>
       </div>
     </footer>
     <script is:inline>
@@ -97,30 +117,6 @@ const personSchema = {
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', () => {
         if (root.dataset.themePreference === 'system') applyTheme('system');
       });
-
-      const driftingDecorations = document.querySelectorAll('[data-scroll-drift]');
-      if (driftingDecorations.length) {
-        let driftFrame = false;
-        const updateDecorationDrift = () => {
-          const scrollRange = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
-          const scrollProgress = Math.min(Math.max(window.scrollY / scrollRange, 0), 1);
-          driftingDecorations.forEach((decoration) => {
-            const maximum = Number(decoration.getAttribute('data-scroll-drift-max')) || 0;
-            const offset = scrollProgress * maximum;
-            decoration.style.setProperty('--scroll-drift-y', `${offset}px`);
-          });
-          driftFrame = false;
-        };
-        const requestDecorationDrift = () => {
-          if (!driftFrame) {
-            driftFrame = true;
-            window.requestAnimationFrame(updateDecorationDrift);
-          }
-        };
-        updateDecorationDrift();
-        window.addEventListener('scroll', requestDecorationDrift, { passive: true });
-        window.addEventListener('resize', requestDecorationDrift);
-      }
 
     </script>
   </body>
