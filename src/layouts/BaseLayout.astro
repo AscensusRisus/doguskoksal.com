@@ -60,7 +60,7 @@ const personSchema = {
         <a class="wordmark" href="/" aria-label="Doğuş Köksal home"><img class="wordmark-icon wordmark-icon-light" src="/favicon.svg" alt="Doğuş Köksal" /><img class="wordmark-icon wordmark-icon-dark" src="/favicon-dark.svg" alt="" /></a>
         <nav class="desktop-nav" aria-label="Primary navigation">
           <a href="/" class={Astro.url.pathname === '/' ? 'active' : undefined}>Home</a>
-          <a href="/work" class={Astro.url.pathname.startsWith('/work') ? 'active' : undefined}>Work</a>
+          <a href="/work" class={Astro.url.pathname.startsWith('/work') ? 'active' : undefined}>Projects</a>
         </nav>
         <div class="header-actions">
           <details class="theme-switcher">
@@ -87,7 +87,7 @@ const personSchema = {
             <summary aria-label="Open menu" title="Open menu"><span class="menu-icon" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr-only">Menu</span></summary>
             <nav class="mobile-nav" aria-label="Mobile navigation">
               <a href="/" class={Astro.url.pathname === '/' ? 'active' : undefined}>Home</a>
-              <a href="/work" class={Astro.url.pathname.startsWith('/work') ? 'active' : undefined}>Work</a>
+              <a href="/work" class={Astro.url.pathname.startsWith('/work') ? 'active' : undefined}>Projects</a>
               <a class="resume-link" href="/resume/Dogus-Koksal-Resume.pdf" download>Resume</a>
             </nav>
           </details>
@@ -100,7 +100,7 @@ const personSchema = {
     <footer class="site-footer">
       <div class="shell footer-inner">
         <div class="footer-meta"><span>Doğuş Köksal</span><span>© 2026</span></div>
-        <span class="footer-tagline">Learning in public, one project at a time.</span>
+        <span class="footer-tagline">Building in public, one project at a time.</span>
       </div>
     </footer>
     <script is:inline>

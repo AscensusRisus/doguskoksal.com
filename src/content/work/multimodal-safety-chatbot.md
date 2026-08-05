@@ -15,6 +15,9 @@ tags:
   - "Ollama"
   - "RAG"
   - "Computer Vision"
+  - "RoBERTa"
+  - "Sentiment Analysis"
+  - "Speech Analysis"
 ---
 
 This is a privately developed project. The public description is intentionally limited to a high-level overview.

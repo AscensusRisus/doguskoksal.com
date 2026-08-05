@@ -5,7 +5,7 @@ import WorkList from '../../components/WorkList.astro';
 const projects = (await getCollection('work')).sort((a, b) => a.id.localeCompare(b.id));
 ---
 
-<BaseLayout title="Work — Doğuş Köksal">
-  <section class="shell page-intro"><p class="eyebrow">Work / Index</p><h1>Projects, experiments,<br /><em>and things I’m learning.</em></h1><p class="lede">A growing archive of work. Each entry will become a fuller case study as the details are ready.</p></section>
-  <section class="shell section-block" aria-labelledby="all-work-heading"><h2 id="all-work-heading" class="sr-only">All work</h2><WorkList projects={projects} /></section>
+<BaseLayout title="Projects — Doğuş Köksal">
+  <section class="shell page-intro"><p class="eyebrow">Projects / Index</p><h1>Projects, systems,<br /><em>and practical experiments.</em></h1><p class="lede">A focused record of software I have built, maintained, and taken from an idea toward a working product.</p></section>
+  <section class="shell section-block" aria-labelledby="all-work-heading"><h2 id="all-work-heading" class="sr-only">All projects</h2><WorkList projects={projects} /></section>
 </BaseLayout>

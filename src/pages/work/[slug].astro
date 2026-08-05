@@ -4,12 +4,31 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 export async function getStaticPaths() { const projects = await getCollection('work'); return projects.map((project) => ({ params: { slug: project.id }, props: { project } })); }
 const { project } = Astro.props;
 const { Content } = await render(project);
+const projectBodyText = project.body.replace(/^\s*#{1,6}\s+/gm, '').replace(/^\s*[-*+]\s+/gm, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[*_`]/g, '').replace(/\s+/g, ' ').trim();
+const projectBodyWords = projectBodyText.split(/\s+/).filter(Boolean);
+const shouldCollapseBody = projectBodyWords.length > 180;
+const projectPreview = projectBodyWords.slice(0, 180).join(' ');
 ---
 
 <BaseLayout title={`${project.data.title} — Doğuş Köksal`}>
   <article class="shell case-study">
-    <a class="back-link" href="/work">← Back to work</a>
-    <div class="case-header"><p class="eyebrow">{project.data.year} / {project.data.role} / {project.data.visibility === 'private' ? 'Private project' : 'Public project'}</p><h1>{project.data.title}</h1><p class="lede">{project.data.summary}</p></div>
-    <div class="case-body">{project.data.visibility === 'private' && <div class="placeholder-note">Private project — this page shares only a high-level description. No private repository or live link is exposed.</div>}<div class="prose"><Content /></div></div>
+    <a class="back-link" href="/work"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 2 12 11.2a1.2 1.2 0 0 0 0 1.6L21 22 5 12 21 2Z"></path></svg><span>Back to projects</span></a>
+    <div class="case-header"><p class="eyebrow">{project.data.year} / {project.data.role} / {project.data.visibility === 'private' ? 'Private project' : 'Public project'}</p><h1>{project.data.title}</h1><p class="lede">{project.data.summary}</p>{project.data.links.repository && <div class="case-links"><a href={project.data.links.repository} target="_blank" rel="noreferrer">View repository on GitHub</a></div>}{project.data.tags.length > 0 && <div class="case-tags" aria-label={`${project.data.title} technology stack`}>{project.data.tags.map(tag => <span>{tag}</span>)}</div>}</div>
+    <div class="case-body">{project.data.visibility === 'private' && <div class="placeholder-note">Private project — this page shares only a high-level description. No private repository or live link is exposed.</div>}{shouldCollapseBody ? <div class="case-content" data-case-content><div class="case-preview prose"><p>{projectPreview}…</p></div><div class="case-full prose" hidden><Content /></div><button class="case-read-more" type="button" aria-expanded="false">Read more</button></div> : <div class="prose"><Content /></div>}</div>
   </article>
+  <script is:inline>
+    document.querySelectorAll('[data-case-content]').forEach((content) => {
+      const preview = content.querySelector('.case-preview');
+      const full = content.querySelector('.case-full');
+      const button = content.querySelector('.case-read-more');
+      if (!(preview instanceof HTMLElement) || !(full instanceof HTMLElement) || !(button instanceof HTMLButtonElement)) return;
+      button.addEventListener('click', () => {
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', String(!expanded));
+        preview.hidden = !expanded;
+        full.hidden = expanded;
+        button.textContent = expanded ? 'Read more' : 'Show less';
+      });
+    });
+  </script>
 </BaseLayout>
