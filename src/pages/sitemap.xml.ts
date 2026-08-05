@@ -1,4 +1,4 @@
-const pages = ['', 'work/', 'work/multimodal-safety-chatbot/'];
+const pages = ['', 'projects/', 'projects/applyly/', 'projects/multimodal-safety-chatbot/'];
 
 export const GET = () => {
   const urls = pages.map((page) => `<url><loc>https://www.doguskoksal.com/${page}</loc></url>`).join('');
