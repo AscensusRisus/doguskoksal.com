@@ -1,7 +1,7 @@
 {
   "name": "doguskoksal.com",
   "version": "1.0.0",
-  "description": "doguskoksal.com",
+  "description": "Doğuş Köksal's software engineering portfolio.",
   "type": "module",
   "scripts": {
     "dev": "astro dev",
@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/AscensusRisus/doguskoksal.com/issues"
   },
-  "homepage": "https://github.com/AscensusRisus/doguskoksal.com#readme",
+  "homepage": "https://www.doguskoksal.com",
   "dependencies": {
     "astro": "^7.1.3"
   }

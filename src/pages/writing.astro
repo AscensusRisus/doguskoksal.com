@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../data/site';
+---
+
+<BaseLayout title="Writing — Doğuş Köksal" description="Writing by Doğuş Köksal about science, technology, and complex ideas made approachable.">
+  <section class="shell page-intro" aria-labelledby="writing-heading">
+    <p class="eyebrow">Writing / Medium</p>
+    <h1 id="writing-heading">Ideas examined<br /><em>in depth.</em></h1>
+    <p class="lede">I write about science and technology by making complex subjects easier to follow without losing the ideas that make them interesting.</p>
+  </section>
+  <section class="shell section-block" aria-labelledby="writing-destination-heading">
+    <h2 id="writing-destination-heading" class="sr-only">Published writing</h2>
+    <a class="work-row writing-row" href={siteConfig.bacteriophageArticleUrl}>
+      <span class="work-index">01</span>
+      <span class="work-title" lang="tr">Mikroskobik Avcılar: Bakteriyofajlara Genel Bir Bakış</span>
+      <span class="work-summary"><span>An introduction to bacteriophages: how these viruses target bacteria, how lytic and lysogenic infection cycles differ, and why phage therapy may help address antibiotic-resistant infections.</span><small>Turkish · 2 min read</small></span>
+      <span class="work-meta">Oct 2023</span>
+    </a>
+  </section>
+</BaseLayout>

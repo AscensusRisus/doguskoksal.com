@@ -1,7 +1,8 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-export async function getStaticPaths() { const projects = await getCollection('work'); return projects.map((project) => ({ params: { slug: project.id }, props: { project } })); }
+import { getPublishedProjects } from '../../lib/projects';
+export async function getStaticPaths() { const projects = await getPublishedProjects(); return projects.map((project) => ({ params: { slug: project.id }, props: { project } })); }
 const { project } = Astro.props;
 const { Content } = await render(project);
 const projectBodyText = project.body.replace(/^\s*#{1,6}\s+/gm, '').replace(/^\s*[-*+]\s+/gm, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[*_`]/g, '').replace(/\s+/g, ' ').trim();
