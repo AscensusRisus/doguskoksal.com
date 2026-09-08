@@ -8,7 +8,7 @@ import { getPublishedProjects } from '../lib/projects';
 const projects = await getPublishedProjects();
 ---
 
-<BaseLayout>
+<BaseLayout description={siteConfig.description}>
   <div class="site-motifs" aria-hidden="true">
     <div class="note-background-test">
       <span class="note-symbol note-symbol-light"></span>
@@ -45,14 +45,14 @@ const projects = await getPublishedProjects();
   </section>
 
   <section class="shell section-block" aria-labelledby="work-heading">
-    <div class="section-heading"><p class="eyebrow">02 / Selected projects</p><a class="text-link" href="/projects">View all projects</a></div>
+    <div class="section-heading"><p class="eyebrow">02 / Selected projects</p><a class="text-link" href="/projects/">View all projects</a></div>
     <h2 id="work-heading">What I’ve been building.</h2>
     <WorkList projects={projects} limit={2} />
   </section>
 
   <section class="shell split-section" id="about" aria-labelledby="about-heading">
     <div><p class="eyebrow">03 / A little context</p><h2 id="about-heading">The person behind the work.</h2></div>
-    <div class="prose"><p>My path into tech started with BTK's Datathon 2023. Preparing for that competition showed me how much I enjoy breaking an unfamiliar problem into smaller pieces and building toward a working answer.</p><p>Since then I've completed bootcamps in machine learning and data science, graduated in computer programming, and gained hands-on experience building cybersecurity platform features. I'm especially drawn to work where thoughtful engineering can make complex systems clearer, safer, or more useful.</p></div>
+    <div class="prose"><p>I'm Doğuş Köksal, a software engineer based in Turkey and a computer programming graduate. I build full-stack web applications and applied AI projects. From January to June 2026, I worked as a Software Developer Intern at SecHard, developing cybersecurity platform features and validating security-hardening recipes.</p><p>My path into tech started with BTK's Datathon 2023. Preparing for that competition showed me how much I enjoy breaking an unfamiliar problem into smaller pieces and building toward a working answer.</p><p>Since then I've completed bootcamps in machine learning and data science, graduated in computer programming, and gained hands-on experience building cybersecurity platform features. I'm especially drawn to work where thoughtful engineering can make complex systems clearer, safer, or more useful.</p></div>
   </section>
 
   <section class="shell split-section capabilities" aria-labelledby="capabilities-heading">
@@ -62,7 +62,7 @@ const projects = await getPublishedProjects();
 
   <section class="shell split-section activities" aria-labelledby="activities-heading">
     <div><p class="eyebrow">05 / Activities</p><h2 id="activities-heading">Outside the code.</h2></div>
-    <div class="activity-entry"><div><h3>YetGen Participant</h3><p class="entry-meta">Yetkin Gençler / Remote / Aug-Nov 2023</p></div><div class="prose"><p>Completed YetGen's 12-week development program, combining technology literacy with teamwork, presentation, career planning, social innovation, and entrepreneurship.</p><p>Developed an impact-oriented initiative through the GirişGen ideathon process aligned with the UN Sustainable Development Goals.</p><p><a class="text-link" href="/activities">View activity details</a></p></div></div>
+    <div class="activity-entry"><div><h3>YetGen Participant</h3><p class="entry-meta">Yetkin Gençler / Remote / Aug-Nov 2023</p></div><div class="prose"><p>Completed YetGen's 12-week development program, combining technology literacy with teamwork, presentation, career planning, social innovation, and entrepreneurship.</p><p>Developed an impact-oriented initiative through the GirişGen ideathon process aligned with the UN Sustainable Development Goals.</p><p><a class="text-link" href="/activities/">View activity details</a></p></div></div>
   </section>
 
   <section class="shell contact-section" aria-labelledby="contact-heading">
