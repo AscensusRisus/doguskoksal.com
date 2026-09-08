@@ -10,6 +10,12 @@ links:
   repository: "https://github.com/AscensusRisus/applyly"
   writing: ""
 cover: ""
+preview:
+  src: "/projects/applyly-pipeline.jpg"
+  alt: "Applyly application tracker showing five demo applications, status filters, pipeline totals, and an application form."
+  width: 1426
+  height: 1069
+  caption: "The application pipeline in Applyly, captured from a local build with fictional demo applications. The totals and response rate reflect this sample data."
 tags:
   - "React"
   - "TypeScript"
