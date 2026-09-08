@@ -8,6 +8,7 @@ const { project } = Astro.props;
 const { Content } = await render(project);
 const projectUrl = new URL(`/projects/${project.id}/`, siteConfig.url).href;
 const repositoryUrl = project.data.visibility === 'public' ? project.data.links.repository : '';
+const preview = project.data.visibility === 'public' ? project.data.preview : undefined;
 const projectSchema = {
   '@type': 'CreativeWork',
   '@id': `${projectUrl}#project`,
@@ -23,6 +24,7 @@ const projectSchema = {
   <article class="shell case-study">
     <a class="back-link" href="/projects/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 2 12 11.2a1.2 1.2 0 0 0 0 1.6L21 22 5 12 21 2Z"></path></svg><span>Back to projects</span></a>
     <div class="case-header"><p class="eyebrow">{project.data.year} / {project.data.role} / {project.data.visibility === 'private' ? 'Private project' : 'Public project'}</p><h1>{project.data.title}</h1><p class="lede">{project.data.summary}</p>{repositoryUrl && <div class="case-links"><a href={repositoryUrl} target="_blank" rel="noreferrer">View repository on GitHub</a></div>}{project.data.tags.length > 0 && <div class="case-tags" aria-label={`${project.data.title} technology stack`}>{project.data.tags.map(tag => <span>{tag}</span>)}</div>}</div>
+    {preview && <figure class="project-preview"><img src={preview.src} alt={preview.alt} width={preview.width} height={preview.height} loading="lazy" decoding="async" /><figcaption><span>{preview.caption}</span><a class="text-link" href={preview.src}>View full-size image</a></figcaption></figure>}
     <div class="case-body">{project.data.visibility === 'private' && <div class="placeholder-note">Private project — this page shares only a high-level description. No private repository or live link is exposed.</div>}<div class="prose"><Content /></div></div>
   </article>
 </BaseLayout>

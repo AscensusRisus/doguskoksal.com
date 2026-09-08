@@ -16,6 +16,13 @@ const work = defineCollection({
       writing: z.string().url().or(z.literal('')),
     }),
     cover: z.string(),
+    preview: z.object({
+      src: z.string(),
+      alt: z.string(),
+      width: z.number().int().positive(),
+      height: z.number().int().positive(),
+      caption: z.string(),
+    }).optional(),
     tags: z.array(z.string()).default([]),
   }),
 });
